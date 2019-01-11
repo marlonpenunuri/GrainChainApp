@@ -28,7 +28,7 @@ class LoginActivity: AppCompatActivity(), LoginContract.View  {
     }
 
     override fun obtainLoginInfo(): UserLoginEntity{
-        return UserLoginEntity(username = "harvx_190878", password = "supersecretpassword" )
+        return UserLoginEntity(username = login_email_edit_text.text.toString(), password = login_password_edit_text.text.toString() )
 //        harvx_190878
 //        supersecretpassword
     }
