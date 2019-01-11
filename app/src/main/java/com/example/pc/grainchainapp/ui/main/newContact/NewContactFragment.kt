@@ -35,7 +35,7 @@ class NewContactFragment : Fragment() {
                 lastName = user_last_name.text.toString(),
                 age = user_age.text.toString(),
                 phoneNumber = user_phone.text.toString(),
-                picUrl =  ""))
+                picUrl =  profilePicture.toString()))
         }
 
         return view1
@@ -51,7 +51,7 @@ class NewContactFragment : Fragment() {
     }
 
     fun createNewContact(userCreated : ContactEntity){
-        add_profile_buton.setImageResource(R.mipmap.ic_launcher222)
+        add_profile_buton.setImageResource(R.mipmap.ic_placeholder)
         user_name.text = null
         user_last_name.text = null
         user_age.text = null
@@ -59,7 +59,6 @@ class NewContactFragment : Fragment() {
 
         view1.clearFocus()
         Application.getContactsEntityBox().put(userCreated)
-        val string = Application.getContactsEntityBox().all
         Toast.makeText(context, R.string.fragment_new_contact_save_button_toast, Toast.LENGTH_SHORT).show()
     }
 }

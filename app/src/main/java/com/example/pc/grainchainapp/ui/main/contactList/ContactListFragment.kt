@@ -11,10 +11,10 @@ import com.example.pc.grainchainapp.R
 import com.example.pc.grainchainapp.db.ContactEntity
 
 class ContactListFragment : Fragment() {
-    var contactsDisplayed = mutableListOf<ContactEntity>()
-    var contacts = mutableListOf<ContactEntity>()
+    private var contactsDisplayed = mutableListOf<ContactEntity>()
+    private var contacts = mutableListOf<ContactEntity>()
     private lateinit var recycler: RecyclerView
-    private lateinit var mAdapter: ContactListAdapter
+    private var mAdapter: ContactListAdapter? = null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,6 +24,8 @@ class ContactListFragment : Fragment() {
         recycler = view.findViewById(R.id.contacts_recycler)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = ContactListAdapter(contactsDisplayed, context)
+        mAdapter = recycler.adapter as ContactListAdapter
+
         setHasOptionsMenu(true)
         return view
     }
@@ -56,7 +58,6 @@ class ContactListFragment : Fragment() {
         inflater.inflate(R.menu.contact_list_menu, menu)
         val searchView = menu.findItem(R.id.menu_nav_search_bar)
         val searchItem = searchView.actionView as SearchView
-        mAdapter = recycler.adapter as ContactListAdapter
 
         searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {
@@ -74,16 +75,27 @@ class ContactListFragment : Fragment() {
                             contactsDisplayed.add(it)
                         }
                     }
-                    mAdapter.notifyDataSetChanged()
+                    mAdapter?.notifyDataSetChanged()
                 } else {
                     contactsDisplayed.clear()
                     contactsDisplayed.addAll(contacts)
-                    mAdapter.notifyDataSetChanged()
+                    mAdapter?.notifyDataSetChanged()
                 }
                 return true
             }
 
         })
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+
+        if(isVisibleToUser){
+            contacts = Application.getContactsEntityBox().all
+            contactsDisplayed.clear()
+            contactsDisplayed.addAll(contacts)
+            mAdapter?.notifyDataSetChanged()
+        }
     }
 
 

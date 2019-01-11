@@ -51,4 +51,5 @@ class MainActivity : AppCompatActivity() {
         mToolbar.setTitleTextColor(ContextCompat.getColor(mContext, android.R.color.white))
         (mContext as AppCompatActivity).supportActionBar?.title = userName
     }
+
 }

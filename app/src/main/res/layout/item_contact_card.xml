@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toTopOf="@+id/contact_name"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_phone"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@mipmap/ic_launcher222"/>
+                android:src="@mipmap/ic_placeholder"/>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
