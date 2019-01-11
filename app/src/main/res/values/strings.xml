@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">GrainChainApp</string>
+
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="error">Error</string>
+
+
+    <string name="activity_main_tab_1">Contactos</string>
+    <string name="activity_main_tab_2">Agregar</string>
+
+
+
+    <string name="activity_login_mail_hint">Usuario</string>
+    <string name="activity_login_password_hint">Contraseña</string>
+    <string name="activity_login_button_text">Iniciar sesión</string>
+
+    <string name="fragment_new_contact_name_hint">Nombre</string>
+    <string name="fragment_new_contact_last_name_hint">Apellido</string>
+    <string name="fragment_new_contact_phone_hint">Teléfono</string>
+    <string name="fragment_new_contact_age_hint">Edad</string>
+    <string name="fragment_new_contact_save_button">Guardar</string>
+    <string name="fragment_new_contact_save_button_toast">Contacto guardado</string>
+
+
+    <string name="fragment_contacts_card_name_mock">Nombre Completo</string>
+    <string name="fragment_contacts_card_phone_mock">Numero de teléfono</string>
+    <string name="fragment_contacts_card_age_mock">Edad</string>
+    <string name="fragment_contacts_card_years">años</string>
+
+    <string name="dialog_delete_contact">¿Desea eliminar el contacto?</string>
+    <string name="dialog_login_error">No hemos podido ingresar, por favor verifíque su información o intente mas tarde</string>
+
+
+    <string name="contact_list_menu_title">Buscar</string>
+
+
+    <string-array name="contacts_name">
+        <item>Juan </item>
+        <item>Pedro </item>
+        <item>Ana </item>
+        <item>Alejandro </item>
+        <item>Alberto </item>
+        <item>Juan </item>
+        <item>Adolf </item>
+        <item>Herman </item>
+        <item>Milan </item>
+        <item>Joseph </item>
+    </string-array>
+
+    <string-array name="contacts_lastname">
+        <item>Perez</item>
+        <item>Lopez</item>
+        <item>Vargas</item>
+        <item>Ramirez</item>
+        <item>Venegas</item>
+        <item>Rulfo</item>
+        <item>Hitler</item>
+        <item>Hesse</item>
+        <item>Kundera</item>
+        <item>Stalin</item>
+    </string-array>
+
+    <string-array name="contacts_age">
+        <item>25</item>
+        <item>32</item>
+        <item>28</item>
+        <item>16</item>
+        <item>44</item>
+        <item>56</item>
+        <item>90</item>
+        <item>75</item>
+        <item>15</item>
+        <item>36</item>
+    </string-array>
+
+    <string-array name="contacts_phone">
+        <item>3320985647</item>
+        <item>3322147534</item>
+        <item>3341124578</item>
+        <item>3320102039</item>
+        <item>3377451782</item>
+        <item>3390963565</item>
+        <item>3324565854</item>
+        <item>3320123242</item>
+        <item>3320417854</item>
+        <item>3322012145</item>
+    </string-array>
+
+    <string-array name="contacts_profile">
+        <item>https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg</item>
+        <item>https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.ngsversion.1484159404151.adapt.1900.1.jpg</item>
+        <item>https://vetstreet.brightspotcdn.com/dims4/default/5b3ffe7/2147483647/thumbnail/180x180/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F8e%2F4e3910c36111e0bfca0050568d6ceb%2Ffile%2Fhub-dogs-puppy.jpg</item>
+        <item>https://www.bluecross.org.uk/sites/default/files/assets/images/20311lpr.jpg</item>
+        <item>https://www.petmd.com/sites/default/files/salmonella-infection-dogs.jpg</item>
+        <item>https://www.dogstrust.org.uk/sponsor/_dogs/goldie-assets/v800_goldie1.jpg</item>
+        <item>https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/02/Pomeranian-Cropped.jpeg</item>
+        <item>https://i.pinimg.com/originals/09/df/f2/09dff222d763d10bebcde24c519bae81.jpg</item>
+        <item>https://www.rover.com/blog/wp-content/uploads/2017/05/pug-tilt-960x540.jpg</item>
+        <item>https://images.spot.im/v1/production/phj6czto7p709vbh7kel</item>
+    </string-array>
+
+
+
+</resources>
