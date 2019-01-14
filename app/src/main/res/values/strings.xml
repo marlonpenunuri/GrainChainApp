@@ -23,6 +23,7 @@
     <string name="fragment_new_contact_save_button">Guardar</string>
     <string name="fragment_new_contact_add_img_button">Agrega una imagen</string>
     <string name="fragment_new_contact_save_button_toast">Contacto guardado</string>
+    <string name="fragment_new_contact_save_button_toast_error">Es necesario llenar todos los campos</string>
 
 
     <string name="fragment_contacts_card_name_mock">Nombre Completo</string>

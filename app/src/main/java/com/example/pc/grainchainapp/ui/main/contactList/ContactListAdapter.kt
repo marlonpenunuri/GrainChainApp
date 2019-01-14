@@ -15,8 +15,9 @@ import com.example.pc.grainchainapp.Application
 import com.example.pc.grainchainapp.db.ContactEntity_
 
 
-class ContactListAdapter(contacts: MutableList<ContactEntity>, mContext: Context?) : RecyclerView.Adapter<ContactListAdapter.CustomViewHolder>() {
-    private var contactsArray : MutableList<ContactEntity> =  contacts
+class ContactListAdapter(contacts: MutableList<ContactEntity>, mContext: Context?) :
+    RecyclerView.Adapter<ContactListAdapter.CustomViewHolder>() {
+    private var contactsArray: MutableList<ContactEntity> = contacts
 
     //number of item
     override fun getItemCount(): Int {
@@ -50,7 +51,8 @@ class ContactListAdapter(contacts: MutableList<ContactEntity>, mContext: Context
                     .positiveColor(ContextCompat.getColor(view.context, R.color.colorPrimary))
                     .onPositive { _, _ ->
                         contactsArray.removeAt(position)
-                        val removedUser = Application.getContactsEntityBox().query().equal(ContactEntity_.phoneNumber, itemView.contact_phone.text.toString()).build().find()
+                        val removedUser = Application.getContactsEntityBox().query()
+                            .equal(ContactEntity_.phoneNumber, itemView.contact_phone.text.toString()).build().find()
                         Application.getContactsEntityBox().remove(removedUser)
                         notifyDataSetChanged()
                     }
@@ -68,9 +70,8 @@ class ContactListAdapter(contacts: MutableList<ContactEntity>, mContext: Context
             view.contact_phone.text = contact.phoneNumber
 
             val contactProfileView = view.contact_profile_pic
-            if(!contact.picUrl.isNullOrEmpty()) {
-                Picasso.get().load(contact.picUrl).resize(100, 100).centerCrop().into(contactProfileView)
-            }
+            Picasso.get().load(contact.picUrl).placeholder(R.mipmap.ic_placeholder).resize(100, 100).centerCrop()
+                .into(contactProfileView)
         }
     }
 

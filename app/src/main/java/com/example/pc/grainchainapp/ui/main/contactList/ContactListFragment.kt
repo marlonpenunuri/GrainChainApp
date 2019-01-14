@@ -9,22 +9,20 @@ import android.view.*
 import com.example.pc.grainchainapp.Application
 import com.example.pc.grainchainapp.R
 import com.example.pc.grainchainapp.db.ContactEntity
+import com.example.pc.grainchainapp.db.ContactEntity_
 
 class ContactListFragment : Fragment() {
     private var contactsDisplayed = mutableListOf<ContactEntity>()
     private var contacts = mutableListOf<ContactEntity>()
-    private lateinit var recycler: RecyclerView
     private var mAdapter: ContactListAdapter? = null
 
+    private lateinit var recycler: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_contact_list, container, false)
 
         initializeContacts()
-        recycler = view.findViewById(R.id.contacts_recycler)
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = ContactListAdapter(contactsDisplayed, context)
-        mAdapter = recycler.adapter as ContactListAdapter
+        initializeAdapter(view)
 
         setHasOptionsMenu(true)
         return view
@@ -32,6 +30,8 @@ class ContactListFragment : Fragment() {
 
     private fun initializeContacts() {
         Application.getContactsEntityBox().removeAll()
+        contactsDisplayed.clear()
+
         val namesArray = resources.getStringArray(R.array.contacts_name)
         val lastNamesArray = resources.getStringArray(R.array.contacts_lastname)
         val ageArray = resources.getStringArray(R.array.contacts_age)
@@ -48,9 +48,16 @@ class ContactListFragment : Fragment() {
                 picUrl = picArray[index]
             )
             Application.getContactsEntityBox().put(newUser)
-            contactsDisplayed.add(newUser)
             index++
         }
+    }
+
+    private fun initializeAdapter(view : View){
+        contactsDisplayed = Application.getContactsEntityBox().query().order(ContactEntity_.userName).build().find()
+        recycler = view.findViewById(R.id.contacts_recycler)
+        recycler.layoutManager = LinearLayoutManager(context)
+        recycler.adapter = ContactListAdapter(contactsDisplayed, context)
+        mAdapter = recycler.adapter as ContactListAdapter
 
     }
 
@@ -65,13 +72,14 @@ class ContactListFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                contacts = Application.getContactsEntityBox().all
+                contacts = Application.getContactsEntityBox().query().order(ContactEntity_.userName).build().find()
                 if (newText!!.isNotEmpty()) {
                     contactsDisplayed.clear()
 
-                    val search = newText.toLowerCase()
+                    val search = newText.toLowerCase().trim()
                     contacts.forEach {
-                        if (it.userName.toLowerCase().startsWith(search) || it.lastName.toLowerCase().startsWith(search)) {
+                        val fullName = it.userName.toLowerCase() + " " + it.lastName.toLowerCase()
+                        if (fullName.toLowerCase().contains(search)) {
                             contactsDisplayed.add(it)
                         }
                     }

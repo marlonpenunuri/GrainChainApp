@@ -19,18 +19,15 @@ class LoginActivity: AppCompatActivity(), LoginContract.View  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         mPresenter = LoginPresenter(this, this)
-
-
-        login_button.setOnClickListener {
-            toggleLoading()
-            mPresenter.userLogin()
-        }
+        initializeListeners()
     }
 
     override fun obtainLoginInfo(): UserLoginEntity{
-        return UserLoginEntity(username = login_email_edit_text.text.toString(), password = login_password_edit_text.text.toString() )
+        return UserLoginEntity(username = "harvx_190878", password = "supersecretpassword"  )
 //        harvx_190878
 //        supersecretpassword
+        //login_email_edit_text.text.toString()
+        //login_password_edit_text.text.toString()
     }
 
     override fun loginSuccessful(userName : String){
@@ -59,6 +56,12 @@ class LoginActivity: AppCompatActivity(), LoginContract.View  {
             progress_bar.visibility = View.INVISIBLE
             login_form_layout.visibility = View.VISIBLE
         }
+    }
 
+    private fun initializeListeners(){
+        login_button.setOnClickListener {
+            toggleLoading()
+            mPresenter.userLogin()
+        }
     }
 }
