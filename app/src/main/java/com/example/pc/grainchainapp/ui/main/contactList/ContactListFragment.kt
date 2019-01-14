@@ -99,7 +99,7 @@ class ContactListFragment : Fragment() {
         super.setUserVisibleHint(isVisibleToUser)
 
         if(isVisibleToUser){
-            contacts = Application.getContactsEntityBox().all
+            contacts = Application.getContactsEntityBox().query().order(ContactEntity_.userName).build().find()
             contactsDisplayed.clear()
             contactsDisplayed.addAll(contacts)
             mAdapter?.notifyDataSetChanged()
