@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_new_contact.view.*
 
 class NewContactFragment : Fragment() {
 
-    private val RESULT_LOAD_IMAGE = 4785
+    private val RESULT_LOAD_IMAGE = 478
     private var profilePicture : Uri ? = null
     private lateinit var view1: View
 
